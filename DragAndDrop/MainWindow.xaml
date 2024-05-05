@@ -1,0 +1,52 @@
+﻿<Window x:Class="DragAndDrop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragAndDrop"
+        mc:Ignorable="d"
+        Title="DragDrop DEMO" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label Content="Source controls: " FontSize="16"/>
+            <Label Name="lblString" Content="Label with string" Background="Orange" Margin="5" MouseDown="lblString_MouseDown"/>
+            <Label Name="lblObject" Content="Label Patient Object" Background="Orange" Margin="5" MouseDown="lblObject_MouseDown"/>
+            <ListBox Name="lboPatients" Background="Orange" Margin="5" Height="100" PreviewMouseDown="lboPatients_PreviewMouseDown">
+            </ListBox>
+            <TreeView Name="trvPatients" Background="Orange" Margin="5" Height="130" PreviewMouseDown="trvPatients_PreviewMouseDown"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Content="Source controls: " FontSize="16"/>
+            <Label Name="lblStringTarget" Content="Drop string here" Background="Green" Margin="5" 
+                   AllowDrop="True"
+                   DragOver="lblStringTarget_DragOver"
+                   Drop="lblStringTarget_Drop"/>
+            <Label Name="lblObjectTarget" Content="Drop Patient here" Background="Green" Margin="5" 
+       AllowDrop="True"
+       DragOver="lblObjectTarget_DragOver"
+       Drop="lblObjectTarget_Drop"/>
+            <GroupBox Header="Drop Patients to ListBox here">
+                <ListBox Name="lboPatientsTarget" Background="Green" Margin="5" Height="90"
+                         AllowDrop="True"
+                         DragOver="lboPatientsTarget_DragOver"
+                         Drop="lboPatientsTarget_Drop">
+                    
+                </ListBox>
+                
+            </GroupBox>
+            <GroupBox>
+                <TreeView Name="trvPatientsTarget" Background="Green" Margin="5" Height="90"
+            AllowDrop="True"
+            DragOver="trvPatientsTarget_DragOver"
+            Drop="trvPatientsTarget_Drop">
+
+                </TreeView>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
